@@ -8,3 +8,4 @@ module.exports = function(app){
         friends.push(req.body);
         res.json(req.body);
     });
+  };
