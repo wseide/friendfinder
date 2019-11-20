@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FriendFinder: Survey</title>
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+  <style>
+    #matchedFriend {
+      left: 50%;
+      transform: translate(-50%, -50%);
+      top: 50%;
+    }
+    .overlay.active {
+      background-color: rgba(0, 0, 0, .25);
+      content: "";
+      height: 100vh;
+      left: 0;
+      top: 0;
+      width: 100vw;
+    }
+  </style>
+</head>
+
+<body class="sans-serif">
+  <div class="ma4">
+    <h1 class="f3 f1-l fw2 mb3 mt4 mt0-ns lh-title">Friend Finder: Survey</h1>
+    <form class="mb4">
+      <h2 class="lh-title">About You</h2>
+      <fieldset class="bw0 ph0 pv2 mb2 mh0 w-100">
+        <legend class="b bw0 f6 pa0 ma0">Name</legend>
+        <input type="text" id="firstName" name="firstName" required class="input-reset ph2 pv1 w-100">
+      </fieldset>
+      <fieldset class="bw0 ph0 pv2 mb2 mh0 w-100">
+        <legend class="b bw0 f6 pa0 ma0">Photo URL</legend>
+        <input type="text" id="photoURL" name="photoURL" required class="input-reset ph2 pv1 w-100">
+      </fieldset>
+      <h2 class="lh-title">Questions</h2>
+      <div class="f7 pb4 flex items-center justify-between">
+        <span>1 = Strongly Disagree</span>
+        <span>5 = Strongly Agree</span>
+      </div>
+      <fieldset class="bw0 ph0 pv2 mb2 mh0 w-100">
+        <legend class="b bw0 f6 pa0 ma0">I make friends easily.</legend>
+        <div class="flex items-center">
+          <input name="q1" type="range" value="3" min="1" max="5" step="1" onmousemove="q1Value.value=value" class="w-100">
+          <output id="q1Value" class="pl3">3</output>
+        </div>
+      </fieldset>
+      <fieldset class="bw0 ph0 pv2 mb2 mh0 w-100">
+        <legend class="b bw0 f6 pa0 ma0">I prefer variety to routine.</legend>
+        <div class="flex items-center">
+          <input name="q2" type="range" value="3" min="1" max="5" step="1" onmousemove="q2Value.value=value" class="w-100">
+          <output id="q2Value" class="pl3">3</output>
+        </div>
+      </fieldset>
+      <fieldset class="bw0 ph0 pv2 mb2 mh0 w-100">
+        <legend class="b bw0 f6 pa0 ma0">I like to solve complex problems.</legend>
+        <div class="flex items-center">
+          <input name="q3" type="range" value="3" min="1" max="5" step="1" onmousemove="q3Value.value=value" class="w-100">
+          <output id="q3Value" class="pl3">3</output>
+        </div>
+      </fieldset>
+      <fieldset class="bw0 ph0 pv2 mb2 mh0 w-100">
+        <legend class="b bw0 f6 pa0 ma0">I make people feel welcome.</legend>
+        <div class="flex items-center">
+          <input name="q4" type="range" value="3" min="1" max="5" step="1" onmousemove="q4Value.value=value" class="w-100">
+          <output id="q4Value" class="pl3">3</output>
+        </div>
+      </fieldset>
+      <fieldset class="bw0 ph0 pv2 mb2 mh0 w-100">
+        <legend class="b bw0 f6 pa0 ma0">I try to follow the rules.</legend>
+        <div class="flex items-center">
+          <input name="q5" type="range" value="3" min="1" max="5" step="1" onmousemove="q5Value.value=value" class="w-100">
+          <output id="q5Value" class="pl3">3</output>
+        </div>
+      </fieldset>
+      <fieldset class="bw0 ph0 pv2 mb2 mh0 w-100">
+        <legend class="b bw0 f6 pa0 ma0">I trust what people say.</legend>
+        <div class="flex items-center">
+          <input name="q6" type="range" value="3" min="1" max="5" step="1" onmousemove="q6Value.value=value" class="w-100">
+          <output id="q6Value" class="pl3">3</output>
+        </div>
+      </fieldset>
+      <fieldset class="bw0 ph0 pv2 mb2 mh0 w-100">
+        <legend class="b bw0 f6 pa0 ma0">I like music.</legend>
+        <div class="flex items-center">
+          <input name="q7" type="range" value="3" min="1" max="5" step="1" onmousemove="q7Value.value=value" class="w-100">
+          <output id="q7Value" class="pl3">3</output>
+        </div>
+      </fieldset>
+      <fieldset class="bw0 ph0 pv2 mb2 mh0 w-100">
+        <legend class="b bw0 f6 pa0 ma0">I can't stand confrontations.</legend>
+        <div class="flex items-center">
+          <input name="q8" type="range" value="3" min="1" max="5" step="1" onmousemove="q8Value.value=value" class="w-100">
+          <output id="q8Value" class="pl3">3</output>
+        </div>
+      </fieldset>
+      <fieldset class="bw0 ph0 pv2 mb2 mh0 w-100">
+        <legend class="b bw0 f6 pa0 ma0">I dislike talking about myself.</legend>
+        <div class="flex items-center">
+          <input name="q9" type="range" value="3" min="1" max="5" step="1" onmousemove="q9Value.value=value" class="w-100">
+          <output id="q9Value" class="pl3">3</output>
+        </div>
+      </fieldset>
+      <fieldset class="bw0 ph0 pv2 mb2 mh0 w-100">
+        <legend class="b bw0 f6 pa0 ma0">I enjoy being part of a group.</legend>
+        <div class="flex items-center">
+          <input name="q10" type="range" value="3" min="1" max="5" step="1" onmousemove="q10Value.value=value" class="w-100">
+          <output id="q10Value" class="pl3">3</output>
+        </div>
+      </fieldset>
+      <button class="f6 link dim br-pill ph3 pv2 mv4 dib white bg-dark-blue input-reset bw0 pointer w-100" type="button" data-toggle="modal" data-target="#matchedFriend">Submit</button>
+    </form>
+
+    <div id="matchedFriend" class="card modal dn absolute z-5 mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10" role="dialog" aria-hidden="true">
+      <h3 class="tc">
+        It's a match!
+      </h3>
+      <div class="card-body tc"></div>
+    </div>
+    <div class="overlay fixed z-1"></div>
+
+    <div class="tc">
+      <a href="/api/friends" class="blue link">API Friends List</a> | <a href="https://github.com/drukelly/FriendFinder" class="blue link">GitHub Repo</a>
+    </div>
+  </div>
+  <script>
+    const form = document.querySelector('form')
+    const modal = document.querySelector('#matchedFriend')
+    const modalContent = document.querySelector('.card-body')
+    const overlay = document.querySelector('.overlay')
+    const submit = document.querySelector('button')
+    let scores = [],
+        sumTotal = 0
+    const handleErrors = (response) => {
+      if (!response.ok) throw Error(response.statusText)
+      return response
+    }
+    const evalFriend = (event) => {
+      event.preventDefault()
+      let bigDiff = { difference: 1000 },
+          friendDiffs = [],
+          totalDiff = []
+      if (submit.getAttribute('data-toggle') === null || submit.getAttribute('data-toggle') === '') {
+        submit.setAttribute('data-toggle', 'modal')
+      }
+      let firstName = document.querySelector('#firstName').value.trim(),
+          photoURL = document.querySelector('#photoURL').value.trim(),
+          ranges = document.querySelectorAll('input[type="range"]'),
+          outputs = document.querySelectorAll('output')
+      for (let range of ranges) {
+        scores.push(parseInt(range.value))
+      }
+      if (firstName === '' || photoURL === '' || scores.includes(NaN)) {
+        alert('Complete the survey to find a match')
+        submit.toggleAttribute('data-toggle')
+        return false
+      } else {
+        modal.classList.remove('dn')
+        overlay.classList.add('active')
+        form.reset()
+        for (let range of ranges) {
+          range.selectedIndex = 2
+        }
+        for (let output of outputs) {
+          output.value = 3
+        }
+        let newFriend = {
+          name: firstName,
+          photo: photoURL,
+          scores
+        }
+        fetch('/api/friends', {
+          body: JSON.stringify(newFriend),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'POST'
+        })
+          .then(handleErrors)
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            data.pop()
+            for (let friend of data) {
+              sumTotal = 0
+              totalDiff = friend.scores.map((item, index) => {
+                return Math.abs(item - newFriend.scores[index])
+              })
+              for (let totalDiffValue of totalDiff) {
+                sumTotal += totalDiffValue
+              }
+              friend.difference = sumTotal
+              friendDiffs.push(friend)
+            }
+            for (let diff of friendDiffs) {
+              if (diff.difference < bigDiff.difference) bigDiff = diff
+            }
+            let template = `
+            <img src="${bigDiff.photo}" alt="Photo of ${bigDiff.name}" class="br-100 h4 w4 dib ba b--black-05 pa2">
+            <h1 class="f3 mb2">${bigDiff.name}</h1>
+            `
+            modalContent.innerHTML = template
+          })
+      }
+    }
+    submit.addEventListener('click', evalFriend)
+    overlay.addEventListener('click', event => {
+      event.preventDefault();
+      location.reload()
+    })
+  </script>
+</body>
+
+</html>
