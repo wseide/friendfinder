@@ -15,3 +15,5 @@ npm install
 ```
 node server.js
 ```
+
+![image](capture.PNG)
